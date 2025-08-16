@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: stock-analyzer-web
     ports:
-      - "5000:5000"
+      - "8010:8010"
     volumes:
       # 挂载配置文件
       - ./config.json:/app/config.json
@@ -19,7 +19,7 @@ services:
       - TZ=Asia/Shanghai
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:5000/api/status"]
+      test: ["CMD", "curl", "-f", "http://localhost:8010/api/status"]
       interval: 30s
       timeout: 10s
       retries: 3
